@@ -1,0 +1,184 @@
+.hero {
+    background-image: var(--gradient);
+    padding: 10rem 1rem;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.hero > form {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero > form > input {
+    padding: var(--padding-elements);
+    font-size: inherit;
+    border-radius: var(--rounded-elements) 0 0 var(--rounded-elements);
+    max-width: 50rem;
+    width: 100%;
+    color: #000000;
+}
+
+.hero > form > button[type="submit"] {
+    font-size: inherit;
+    padding: var(--padding-elements);
+    border-radius: 0 var(--rounded-elements) var(--rounded-elements) 0;
+    cursor: pointer;
+    background-color: #bbb3b3;
+    color: #000000;
+}
+
+.hero > form > button[type="submit"]:hover {
+    background-color: #8c8a8a;
+}
+
+.short_urls {
+    padding: 4rem 1rem;
+    background-color: var(--light-bg);
+}
+
+.url_container__desktop {
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+    max-width: 90rem;
+    width: 100%;
+    max-height: 50rem;
+    overflow-y: auto;
+    border-radius: 0 0 var(--rounded-elements) var(--rounded-elements);
+}
+
+.url_container__desktop > .urls:nth-child(1) {
+    background-image: var(--gradient);
+    color: #ffffff;
+    font-weight: 600;
+    border-radius: var(--rounded-elements) var(--rounded-elements) 0 0;
+    position: sticky;
+    inset: 0;
+    bottom: auto;
+}
+
+.url_container__desktop > .urls {
+    display: flex;
+    width: 100%;
+    padding: 1rem 1.5rem;
+}
+
+.url_container__desktop > .urls > p:nth-child(1) {
+    width: 6rem;
+}
+.url_container__desktop > .urls > p:nth-child(2) {
+    flex: 1;
+}
+.url_container__desktop > .urls > p:nth-child(3) {
+    width: 30rem;
+}
+.url_container__desktop > .urls > p:nth-child(4) {
+    width: 5rem;
+}
+
+.url_container__small__devices {
+    display: none;
+    align-items: center;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.url_container__small__devices > .urls {
+    border-radius: var(--rounded-elements);
+    position: relative;
+    z-index: 1;
+}
+
+.url_container__small__devices > .urls::before {
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 10rem;
+    background-image: var(--gradient);
+    border-radius: var(--rounded-elements) 0 0 var(--rounded-elements);
+    z-index: -1;
+}
+
+.url_container__small__devices > .urls > div {
+    display: flex;
+    border-radius: 0 var(--rounded-elements) var(--rounded-elements) 0;
+}
+.url_container__small__devices > .urls > div > p:nth-child(1) {
+    padding: 0.5rem 0 0.5rem 0.75rem;
+    color: #ffffff;
+    font-weight: 600;
+    width: 10rem;
+}
+.url_container__small__devices > .urls > div > p:nth-child(2) {
+    padding: 0.5rem 0.75rem;
+    background-color: #ffffff;
+    width: calc(100% - 8rem);
+}
+
+@media screen and (max-width: 60em) {
+    .url_container__desktop {
+        display: none;
+    }
+    .url_container__small__devices {
+        display: flex;
+    }
+}
+
+@media screen and (max-width: 44em) {
+    .hero > h1 {
+        font-size: 3rem;
+    }
+    .hero > form > input {
+        width: 26rem;
+    }
+    .hero > form > input,
+    .hero > form > button[type="submit"] {
+        padding: 1.2rem;
+    }
+}
+
+@media screen and (max-width: 35em) {
+    .url_container__small__devices > .urls {
+        border-radius: var(--rounded-elements);
+    }
+    .url_container__small__devices > .urls::before {
+        width: 100%;
+    }
+    .url_container__small__devices > .urls > div {
+        flex-direction: column;
+    }
+    .url_container__small__devices > .urls > div > p:nth-child(1),
+    .url_container__small__devices > .urls > div > p:nth-child(2) {
+        width: 100%;
+    }
+    .url_container__small__devices > .urls > div:nth-child(2) > p:nth-child(2) {
+        max-width: 35ch;
+        width: 100%;
+        overflow-x: hidden;
+    }
+}
+
+@media screen and (max-width: 25em) {
+    .hero > form {
+        flex-direction: column;
+        padding: 1.4rem;
+        gap: 1rem;
+    }
+    .hero > form > input {
+        width: 100%;
+    }
+    .hero > form > button[type="submit"] {
+        width: 100%;
+    }
+    .url_container__small__devices > .urls > div:nth-child(2) > p:nth-child(2) {
+        max-width: 33ch;
+    }
+}

@@ -1,6 +1,13 @@
 import express, { Request, Response } from "express";
 import WeeUrl from "../models/schema";
+import { join } from "path";
 const app = express();
+
+app.set("view engine", "ejs");
+app.set("views", join(__dirname, "../views"));
+app.use(express.static(join(__dirname, "../public")));
+app.use(express.urlencoded({ extended: true, limit: "1000mb" }));
+app.use(express.json({ limit: "1000mb" }));
 
 app.get("/", async (req: Request, res: Response) => {
     const urlList = await WeeUrl.find();
@@ -13,12 +20,11 @@ app.post("/short-url", async (req: Request, res: Response) => {
     res.redirect("/");
 });
 
-app.get("/:shorturl", async (req: Request, res: Response) => {
+app.get("/:shortUrl", async (req: Request, res: Response) => {
     const { shortUrl } = req.params;
     const url = await WeeUrl.findOne({ shortUrl });
     if (!url) {
-        // todo: can add a 404 custom webpage later
-        return res.sendStatus(404);
+        return res.status(404).render("error");
     }
     url.clicks++;
     await url.save();
@@ -27,7 +33,7 @@ app.get("/:shorturl", async (req: Request, res: Response) => {
 });
 
 app.use((req: Request, res: Response) => {
-    res.status(404).json({ success: false, message: "This route does not exist" });
+    res.status(404).render("error");
 });
 
 export default app;
