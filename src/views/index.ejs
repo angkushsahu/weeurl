@@ -4,6 +4,14 @@
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta
+            name="description"
+            content="WeeUrl is a free url shortener for your lengthy website urls. It is completely free and easy to use. No need of any registration or whatsoever. Simply visit our website, paste the link on the input and hit enter, you will get a shortened link to share with whomever you want."
+        />
+        <meta name="robots" content="INDEX, FOLLOW" />
+        <meta name="keyword" content="weeurl, wee, url, url short, shortener" />
+        <link rel="manifest" href="/site.webmanifest" />
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
         <link type="text/css" rel="stylesheet" href="/styles/globals.css" />
         <link type="text/css" rel="stylesheet" href="/styles/home.css" />
         <title>WeeUrl</title>
@@ -12,7 +20,7 @@
         <div class="root">
             <main class="hero">
                 <h1>Welcome to WeeUrl</h1>
-                <form action="">
+                <form action="/short-url" method="post">
                     <label for=""></label>
                     <input type="text" id="fullUrl" name="fullUrl" placeholder="Enter your website's url" />
                     <button type="submit">Shorten URL</button>
@@ -27,32 +35,52 @@
                         <p>Short Url</p>
                         <p>Clicks</p>
                     </div>
+                    <% urlList.map((value, idx) => { %>
                     <div class="urls">
-                        <p>1.</p>
-                        <p class="span">https://linkedin.com/in/angkush-sahu/2341283457123</p>
-                        <p>https://weeurl.vercel.app/82347231</p>
-                        <p>1000</p>
+                        <p><%= idx + 1 %>.</p>
+                        <p class="span">
+                            <a href="<%= value.shortUrl %>" rel="noopener noreferrer" target="_blank">
+                                <%= value.fullUrl %>
+                            </a>
+                        </p>
+                        <p>
+                            <a href="<%= value.shortUrl %>" rel="noopener noreferrer" target="_blank">
+                                https://weeurl.vercel.app/<%= value.shortUrl %>
+                            </a>
+                        </p>
+                        <p><%= value.clicks %></p>
                     </div>
+                    <% }) %>
                 </div>
                 <div class="url_container__small__devices">
+                    <% urlList.map((value, idx) => { %>
                     <div class="urls">
                         <div>
                             <p>Sl. No.</p>
-                            <p>1.</p>
+                            <p><%= idx + 1 %>.</p>
                         </div>
                         <div>
                             <p class="span">Full Url</p>
-                            <p class="span">https://linkedin.com/in/angkushsahu/2341283457123</p>
+                            <p class="span">
+                                <a href="<%= value.shortUrl %>" rel="noopener noreferrer" target="_blank">
+                                    <%= value.fullUrl %>
+                                </a>
+                            </p>
                         </div>
                         <div>
                             <p>Short Url</p>
-                            <p>https://weeurl.vercel.app/82347231</p>
+                            <p>
+                                <a href="<%= value.shortUrl %>" rel="noopener noreferrer" target="_blank">
+                                    https://weeurl.vercel.app/<%= value.shortUrl %>
+                                </a>
+                            </p>
                         </div>
                         <div>
                             <p>Clicks</p>
-                            <p>1000</p>
+                            <p><%= value.clicks %></p>
                         </div>
                     </div>
+                    <% }) %>
                 </div>
             </section>
             <footer>

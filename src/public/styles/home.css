@@ -29,12 +29,13 @@
     padding: var(--padding-elements);
     border-radius: 0 var(--rounded-elements) var(--rounded-elements) 0;
     cursor: pointer;
-    background-color: #bbb3b3;
+    /* background-color: #55aaff; */
+    background-color: #dedede;
     color: #000000;
 }
 
 .hero > form > button[type="submit"]:hover {
-    background-color: #8c8a8a;
+    background-color: #c0bdbd;
 }
 
 .short_urls {
@@ -82,6 +83,7 @@
 }
 .url_container__desktop > .urls > p:nth-child(4) {
     width: 5rem;
+    text-align: center;
 }
 
 .url_container__small__devices {
@@ -166,7 +168,7 @@
     }
 }
 
-@media screen and (max-width: 25em) {
+@media screen and (max-width: 26.25em) {
     .hero > form {
         flex-direction: column;
         padding: 1.4rem;
